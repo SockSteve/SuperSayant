@@ -1,0 +1,157 @@
+[gd_scene load_steps=9 format=3 uid="uid://bi5cwyernavoo"]
+
+[ext_resource type="Texture2D" uid="uid://63nlyw8xijmb" path="res://Assets/Creatures/Ants/1298259.svg" id="1_wkq1u"]
+[ext_resource type="Script" path="res://Game/GameOverMenu.gd" id="2_jkerc"]
+[ext_resource type="LabelSettings" uid="uid://d26tp5m1ymvxt" path="res://Assets/LabelFont/LabelSettingsTimer.tres" id="3_tbmrf"]
+[ext_resource type="StyleBox" uid="uid://dviddtobwa2m1" path="res://Assets/UI/BtnFlatBox.tres" id="4_5al1g"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_s0ht7"]
+outline_size = 16
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 10
+shadow_color = Color(0, 0, 0, 0.576471)
+shadow_offset = Vector2(6.065, 3.575)
+
+[sub_resource type="LabelSettings" id="LabelSettings_8xi5k"]
+outline_size = 16
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 10
+shadow_color = Color(0, 0, 0, 0.576471)
+shadow_offset = Vector2(6.065, 3.575)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pu5l0"]
+bg_color = Color(0.250772, 0.803984, 0.179219, 1)
+skew = Vector2(0.45, 0)
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 65
+corner_radius_bottom_right = 105
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cy1ck"]
+bg_color = Color(0.106206, 0.356088, 0.075211, 1)
+skew = Vector2(0.45, 0)
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 65
+corner_radius_bottom_right = 105
+
+[node name="GameOverMenu" type="TextureRect"]
+process_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_wkq1u")
+expand_mode = 1
+script = ExtResource("2_jkerc")
+
+[node name="Credits" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -311.0
+offset_top = -74.0
+offset_right = -16.0
+offset_bottom = 67.0
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_horizontal = 4
+text = "Music: 
+Crickets at Night
+(from freemusicarchive.org)
+Beat Mekanik: Game Day"
+label_settings = SubResource("LabelSettings_s0ht7")
+
+[node name="Credits2" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -307.0
+offset_top = -283.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 4
+text = "Sfx:
+(taken from freesound.org): 
+Block 1
+Explosion Classic_10
+wolfsinger__weirdbreat
+lsprice__active-breaths
+deganoth__explosion-1
+cabled_mess__blip
+mediagruppen__man-screaming
+moodyfingers__russian-google-tts-
+mechanic-scream
+"
+label_settings = SubResource("LabelSettings_8xi5k")
+
+[node name="Credits3" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -310.0
+offset_top = 169.0
+offset_right = -33.0
+offset_bottom = 281.0
+grow_horizontal = 0
+size_flags_horizontal = 4
+text = "Animal Pictures:
+svgrepo.com"
+label_settings = SubResource("LabelSettings_8xi5k")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -113.0
+offset_top = -124.0
+offset_right = 96.0
+offset_bottom = 23.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 25
+
+[node name="GameMassage" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Game %s"
+label_settings = ExtResource("3_tbmrf")
+
+[node name="GameScore" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Your Score: %s"
+label_settings = ExtResource("3_tbmrf")
+
+[node name="Thank" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Thank's for
+playing ^^"
+label_settings = ExtResource("3_tbmrf")
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 16
+theme_override_styles/hover = SubResource("StyleBoxFlat_pu5l0")
+theme_override_styles/pressed = ExtResource("4_5al1g")
+theme_override_styles/normal = SubResource("StyleBoxFlat_cy1ck")
+text = "Replay"
+
+[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_button_pressed"]

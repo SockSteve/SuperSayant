@@ -1,0 +1,195 @@
+[gd_scene load_steps=10 format=3 uid="uid://clhs5bdtypm2l"]
+
+[ext_resource type="Script" path="res://Creatures/Elephant.gd" id="1_aocun"]
+[ext_resource type="Texture2D" uid="uid://ig4lyw7m5qhj" path="res://Assets/Creatures/Mammals/Elephant.svg" id="2_tc8pj"]
+[ext_resource type="AudioStream" uid="uid://cws5x63rhrpkk" path="res://Assets/SoundFX/Explosion Classic_10_be.mp3" id="3_66u4c"]
+[ext_resource type="Script" path="res://Creatures/enemy_area.gd" id="3_y23ge"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_aho52"]
+radius = 22.5056
+
+[sub_resource type="Animation" id="Animation_lm8a2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Area2D:monitoring")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioStreamPlayer2D:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_c03j7"]
+resource_name = "Recover"
+length = 8.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.266667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Area2D:monitoring")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0333333),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(7.96667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"stomp"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_vlpro"]
+resource_name = "Stomp"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.566667, 0.933333, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.255), Color(1, 1, 1, 0.294118), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Area2D:monitoring")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"emit_screen_shake"
+}, {
+"args": [],
+"method": &"recover"
+}]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AudioStreamPlayer2D:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_v06mk"]
+_data = {
+"RESET": SubResource("Animation_lm8a2"),
+"Recover": SubResource("Animation_c03j7"),
+"Stomp": SubResource("Animation_vlpro")
+}
+
+[node name="Elephant" type="Node2D"]
+script = ExtResource("1_aocun")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+scale = Vector2(0.259, 0.25)
+texture = ExtResource("2_tc8pj")
+
+[node name="Sprite2" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.2)
+scale = Vector2(0.259, 0.25)
+texture = ExtResource("2_tc8pj")
+
+[node name="Area2D" type="Area2D" parent="." node_paths=PackedStringArray("par") groups=["enemy"]]
+collision_layer = 2
+collision_mask = 5
+monitorable = false
+script = ExtResource("3_y23ge")
+par = NodePath("..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_aho52")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_v06mk")
+}
+autoplay = "Recover"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_66u4c")
+volume_db = 6.82
+pitch_scale = 0.43
+max_distance = 15000.0
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

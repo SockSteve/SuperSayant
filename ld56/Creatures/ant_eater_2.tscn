@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://cqnsv218l0tgc"]
+
+[ext_resource type="Script" path="res://Creatures/ant_eater_2.gd" id="1_4n1qp"]
+[ext_resource type="Texture2D" uid="uid://b4dbenctjlc60" path="res://Assets/Creatures/Mammals/AntEater2.svg" id="2_jqo02"]
+[ext_resource type="Script" path="res://Creatures/enemy_area.gd" id="3_nvii8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l0vj5"]
+size = Vector2(35, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_umjwd"]
+size = Vector2(6.23772, 52.9386)
+
+[node name="AntEater_2" type="Node2D"]
+script = ExtResource("1_4n1qp")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+scale = Vector2(0.0998397, 0.103681)
+texture = ExtResource("2_jqo02")
+
+[node name="Area2D" type="Area2D" parent="." node_paths=PackedStringArray("par") groups=["enemy"]]
+collision_layer = 2
+collision_mask = 5
+script = ExtResource("3_nvii8")
+par = NodePath("..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(7.5, 9)
+shape = SubResource("RectangleShape2D_l0vj5")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(32.4488, 2.46997)
+rotation = -0.213156
+shape = SubResource("RectangleShape2D_umjwd")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

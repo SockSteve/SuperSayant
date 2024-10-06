@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://cgxs1hj2k1bqg"]
+
+[ext_resource type="Script" path="res://Game/TimerLabel.gd" id="1_7v7f2"]
+[ext_resource type="LabelSettings" uid="uid://d26tp5m1ymvxt" path="res://Assets/LabelFont/LabelSettingsTimer.tres" id="1_g1eku"]
+
+[node name="Control" type="Label"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+label_settings = ExtResource("1_g1eku")
+horizontal_alignment = 1
+script = ExtResource("1_7v7f2")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 140.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

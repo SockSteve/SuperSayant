@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://dyfw3s4xob05d"]
+
+[ext_resource type="LabelSettings" uid="uid://d26tp5m1ymvxt" path="res://Assets/LabelFont/LabelSettingsTimer.tres" id="1_00ae8"]
+[ext_resource type="Script" path="res://Game/Calories.gd" id="2_h8fkt"]
+[ext_resource type="StyleBox" uid="uid://dxtv8qkosu3wh" path="res://Assets/UI/BarFlatbox.tres" id="2_pdrqv"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ct1js"]
+bg_color = Color(0.815686, 0.819608, 0.443137, 0.74902)
+skew = Vector2(0.67, 0)
+border_width_left = 10
+border_width_top = 10
+border_width_bottom = 10
+border_color = Color(0.262745, 0, 0, 1)
+border_blend = true
+
+[node name="Calories" type="Label"]
+offset_right = 337.0
+offset_bottom = 45.0
+text = "Calories: %"
+label_settings = ExtResource("1_00ae8")
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("2_h8fkt")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 50.0
+offset_right = 345.0
+offset_bottom = 93.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 16
+theme_override_styles/background = ExtResource("2_pdrqv")
+theme_override_styles/fill = SubResource("StyleBoxFlat_ct1js")
+max_value = 250.0
+step = 1.0
+
+[connection signal="value_changed" from="ProgressBar" to="." method="_on_progress_bar_value_changed"]

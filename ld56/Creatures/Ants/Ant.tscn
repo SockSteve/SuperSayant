@@ -1,0 +1,369 @@
+[gd_scene load_steps=17 format=3 uid="uid://bkk4d76weivrj"]
+
+[ext_resource type="Script" path="res://Creatures/Ants/Ant.gd" id="1_rohh5"]
+[ext_resource type="Texture2D" uid="uid://63nlyw8xijmb" path="res://Assets/Creatures/Ants/1298259.svg" id="2_dyptw"]
+[ext_resource type="Texture2D" uid="uid://cve1hcc2t818r" path="res://Assets/Gucci/aura.png" id="2_hgwos"]
+[ext_resource type="Shader" path="res://Shader/Outline2D.gdshader" id="3_p4ooy"]
+[ext_resource type="Texture2D" uid="uid://caca50fq0rgce" path="res://Assets/Gucci/SayantHair.png" id="4_gw5u6"]
+[ext_resource type="AudioStream" uid="uid://cau8q5bokl4ou" path="res://Assets/SoundFX/Block 1.wav" id="6_3hpu5"]
+[ext_resource type="AudioStream" uid="uid://d3w84ge85epav" path="res://Assets/SoundFX/Kick 15.wav" id="7_ta41q"]
+[ext_resource type="AudioStream" uid="uid://bmkf2x5p4dibi" path="res://Assets/SoundFX/652470__mediagruppen__man-screaming.mp3" id="8_dlasd"]
+[ext_resource type="AudioStream" uid="uid://bniulec3wdyqd" path="res://Assets/Music/Beat Mekanik - Game Day.mp3" id="9_x4sj2"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_viftq"]
+shader = ExtResource("3_p4ooy")
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/line_thickness = 20.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ylipx"]
+size = Vector2(220, 140)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r7qqi"]
+size = Vector2(800, 800)
+
+[sub_resource type="Animation" id="Animation_24uqr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Screming:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Aura:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Hair:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("BGM:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Hair:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Aura:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath(".:collision_layer")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [17]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("SayantArea:monitoring")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath(".:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("DeathScream:playing")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_b43cj"]
+resource_name = "become_sayant"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Screming:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3.56667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Aura:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.96667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Hair:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.93333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("BGM:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(3.76667),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Hair:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Aura:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath(".:collision_layer")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.0333333),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [16]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("SayantArea:monitoring")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(2),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_dypca"]
+resource_name = "die"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"emit_game_over"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("DeathScream:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_u0ncc"]
+_data = {
+"RESET": SubResource("Animation_24uqr"),
+"become_sayant": SubResource("Animation_b43cj"),
+"die": SubResource("Animation_dypca")
+}
+
+[node name="CharacterBody2D" type="CharacterBody2D" groups=["ant"]]
+collision_layer = 17
+collision_mask = 8
+script = ExtResource("1_rohh5")
+
+[node name="Aura" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0)
+position = Vector2(20, -12)
+rotation = 1.58607
+scale = Vector2(0.730742, 0.510489)
+texture = ExtResource("2_hgwos")
+
+[node name="Ant" type="Sprite2D" parent="."]
+rotation = 1.5708
+scale = Vector2(0.2, 0.212)
+texture = ExtResource("2_dyptw")
+
+[node name="Hair" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0)
+position = Vector2(32, -4)
+rotation = -1.38149
+scale = Vector2(0.0958717, 0.158079)
+texture = ExtResource("4_gw5u6")
+flip_h = true
+
+[node name="Collectible" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_viftq")
+position = Vector2(-48, 2)
+rotation = 1.5708
+scale = Vector2(0.108199, 0.108217)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(-14, -1)
+shape = SubResource("RectangleShape2D_ylipx")
+
+[node name="collect" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_3hpu5")
+volume_db = 5.0
+max_distance = 10000.0
+
+[node name="drop" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_ta41q")
+volume_db = 5.0
+max_distance = 10000.0
+
+[node name="SayantArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SayantArea"]
+visible = false
+shape = SubResource("RectangleShape2D_r7qqi")
+
+[node name="Screming" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_dlasd")
+
+[node name="BGM" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_x4sj2")
+
+[node name="DeathScream" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_dlasd")
+volume_db = 0.455
+pitch_scale = 2.65
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_u0ncc")
+}
+
+[connection signal="area_entered" from="SayantArea" to="." method="_on_sayant_area_area_entered"]

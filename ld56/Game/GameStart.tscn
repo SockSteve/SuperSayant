@@ -1,0 +1,131 @@
+[gd_scene load_steps=6 format=3 uid="uid://di6bwbagtx2h0"]
+
+[ext_resource type="Script" path="res://Game/StartGameUI.gd" id="1_fuygr"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_vm5pe"]
+font_size = 32
+outline_size = 16
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 10
+shadow_color = Color(0, 0, 0, 0.576471)
+shadow_offset = Vector2(6.065, 3.575)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_su2mq"]
+bg_color = Color(0.242505, 0.769632, 0.17481, 1)
+skew = Vector2(0.45, 0)
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 65
+corner_radius_bottom_right = 105
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_durh8"]
+bg_color = Color(0.189834, 0.588692, 0.139821, 1)
+skew = Vector2(0.45, 0)
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 65
+corner_radius_bottom_right = 105
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bn1v5"]
+bg_color = Color(0.119334, 0.390803, 0.08563, 1)
+skew = Vector2(0.45, 0)
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 65
+corner_radius_bottom_right = 105
+
+[node name="StartGame" type="Panel"]
+process_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fuygr")
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -115.0
+offset_right = 115.0
+offset_bottom = 45.0
+grow_horizontal = 2
+text = "SUPER SAYANT"
+label_settings = SubResource("LabelSettings_vm5pe")
+
+[node name="Title2" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -368.0
+offset_top = 161.0
+offset_right = -18.0
+offset_bottom = 206.0
+grow_horizontal = 2
+text = "Move your Character via: Mouse Left click"
+label_settings = SubResource("LabelSettings_vm5pe")
+
+[node name="Title3" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -513.0
+offset_top = 250.0
+offset_right = 327.0
+offset_bottom = 295.0
+grow_horizontal = 2
+text = "Collect leafs, apples, etc. and bring them to your home"
+label_settings = SubResource("LabelSettings_vm5pe")
+
+[node name="Title4" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -509.0
+offset_top = 328.0
+offset_right = 401.0
+offset_bottom = 421.0
+grow_horizontal = 2
+text = "Gather ants by walking into them, they will follow you.
+Every ant can only hold one collectible.
+"
+label_settings = SubResource("LabelSettings_vm5pe")
+
+[node name="Title5" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -512.0
+offset_top = 448.0
+offset_right = 398.0
+offset_bottom = 541.0
+grow_horizontal = 2
+text = "Gather enough calories and become SUPER SAYANT before 
+the time runs out!
+"
+label_settings = SubResource("LabelSettings_vm5pe")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 419.0
+offset_top = 556.0
+offset_right = 611.0
+offset_bottom = 592.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 24
+theme_override_styles/hover = SubResource("StyleBoxFlat_su2mq")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_durh8")
+theme_override_styles/normal = SubResource("StyleBoxFlat_bn1v5")
+text = "Start Game"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
